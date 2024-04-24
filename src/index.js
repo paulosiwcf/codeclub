@@ -10,6 +10,13 @@
 
 export default {
 	async fetch(request, env, ctx) {
-		return new Response('Hello World!');
+		let message = {}
+		request.method == 'POST' ? message = 'Hello Word for POST!': message = 'Hello World!';
+
+		return new Response( JSON.stringify({ message }), {
+			headers: {
+				'content-type': 'application/json'
+			}
+		});	
 	},
 };
